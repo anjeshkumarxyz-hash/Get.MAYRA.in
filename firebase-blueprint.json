@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "Chat": {
+      "title": "Chat Message",
+      "description": "A chat message from the user or the model.",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "text": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["role", "text", "createdAt"]
+    },
+    "VoiceLog": {
+      "title": "Voice Interaction Log",
+      "description": "Log of a voice interaction or context to maintain Mayra's memory.",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["text", "createdAt"]
+    },
+    "UserSettings": {
+      "title": "User Settings",
+      "description": "User preferences including custom wake word.",
+      "type": "object",
+      "properties": {
+        "wakeWord": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{userId}/chats/{chatId}": {
+      "schema": { "$ref": "#/entities/Chat" },
+      "description": "Chat messages for a specific user."
+    },
+    "users/{userId}/voiceLogs/{logId}": {
+      "schema": { "$ref": "#/entities/VoiceLog" },
+      "description": "Voice interaction logs to maintain context for Mayra."
+    },
+    "users/{userId}/settings/preferences": {
+      "schema": { "$ref": "#/entities/UserSettings" },
+      "description": "User specific settings and preferences."
+    }
+  }
+}

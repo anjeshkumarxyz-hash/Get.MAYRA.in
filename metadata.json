@@ -1,0 +1,10 @@
+{
+  "name": "Mayra Assistant",
+  "description": "A realtime, background-running voice assistant named Mayra with a witty, sassy persona.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
